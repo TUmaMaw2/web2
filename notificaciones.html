@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notificaciones - MobilRute</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100%;
+      background-color: #004c99;
+      padding: 1.5rem 1rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h2 {
+      color: white;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #0066cc;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 2rem;
+    }
+
+    .notification {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #0066cc;
+      background-color: #eaf4ff;
+      border-radius: 6px;
+      font-size: 1rem;
+      animation: fadeInOut 5s forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-10px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+
+    button {
+      padding: 10px 16px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #004c99;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>MobilRute</h2>
+    <a href="ubicacion.html">📍 Ubicación</a>
+    <a href="cronometro.html">⏱️ Cronómetro</a>
+    <a href="horarios.html">🚌 Horarios</a>
+    <a href="notificaciones.html">🔔 Notificaciones</a>
+    <a href="perfil.html">👤 Perfil</a>
+    <a href="login.html">🔓 Cerrar sesión</a>
+  </div>
+
+  <div class="main">
+    <h1>Notificaciones</h1>
+    <div id="notificaciones"></div>
+    <button onclick="mostrarNotificacion()">Mostrar notificación</button>
+  </div>
+
+  <script>
+    function mostrarNotificacion() {
+      const contenedor = document.getElementById("notificaciones");
+      const div = document.createElement("div");
+      div.className = "notification";
+      div.textContent = "🚨 Unidad 12 ha llegado a su destino.";
+      contenedor.appendChild(div);
+
+      // Eliminar después de 5 segundos
+      setTimeout(() => {
+        div.remove();
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

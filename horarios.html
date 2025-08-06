@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horarios - MobilRute</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100%;
+      background-color: #004c99;
+      padding: 1.5rem 1rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h2 {
+      color: white;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #0066cc;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    form {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    form input {
+      padding: 8px;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    form button {
+      padding: 8px 16px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #004c99;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>MobilRute</h2>
+    <a href="ubicacion.html">📍 Ubicación</a>
+    <a href="cronometro.html">⏱️ Cronómetro</a>
+    <a href="horarios.html">🚌 Horarios</a>
+    <a href="notificaciones.html">🔔 Notificaciones</a>
+    <a href="perfil.html">👤 Perfil</a>
+    <a href="login.html">🔓 Cerrar sesión</a>
+  </div>
+
+  <div class="main">
+    <h1>Registro de Horarios</h1>
+    <form id="horarioForm">
+      <input type="text" id="unidad" placeholder="Unidad" required />
+      <input type="time" id="salida" placeholder="Salida" required />
+      <input type="time" id="llegada" placeholder="Llegada" required />
+      <button type="submit">Agregar</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Unidad</th>
+          <th>Salida</th>
+          <th>Llegada</th>
+        </tr>
+      </thead>
+      <tbody id="horarioBody">
+        <!-- Registros aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById("horarioForm");
+    const tbody = document.getElementById("horarioBody");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const unidad = document.getElementById("unidad").value;
+      const salida = document.getElementById("salida").value;
+      const llegada = document.getElementById("llegada").value;
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${unidad}</td>
+        <td>${salida}</td>
+        <td>${llegada}</td>
+      `;
+      tbody.appendChild(row);
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
